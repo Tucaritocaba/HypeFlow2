@@ -1,0 +1,210 @@
+<!-- CÓDIGO COMPLETO -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HypeFlow - Comprar Seguidores</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0d0014;
+      color: #fff;
+      background-image: radial-gradient(circle at top left, #350045, transparent);
+    }
+    header {
+      background-color: #1b002b;
+      text-align: center;
+      padding: 20px;
+    }
+    header img {
+      max-height: 80px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #b478ff;
+      margin: 10px 0;
+    }
+    .produtos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .card {
+      background-color: #220033;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 15px #9900ff33;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .card img {
+      height: 50px;
+      margin-bottom: 10px;
+    }
+    .card h3 {
+      color: #d3a3ff;
+    }
+    .card select, .card input, .card button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+    .card select, .card input {
+      background: #2f0048;
+      color: #fff;
+    }
+    .card button {
+      background: #8000ff;
+      color: white;
+      cursor: pointer;
+    }
+    .card button:hover {
+      background: #a64dff;
+    }
+    .carrinho {
+      background: #1b002b;
+      max-width: 900px;
+      margin: 40px auto;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 0 20px #9900ff44;
+    }
+    .carrinho h2 {
+      text-align: center;
+      color: #d6aaff;
+    }
+    .carrinho ul {
+      list-style: none;
+      padding: 0;
+    }
+    .carrinho li {
+      background: #300044;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+    }
+    .total {
+      text-align: right;
+      font-size: 1.2rem;
+      color: #b478ff;
+      margin-top: 10px;
+    }
+    .finalizar {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .finalizar a {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #550080;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    .finalizar a:hover {
+      background-color: #7a00cc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo_nn.png" alt="HypeFlow Logo">
+    <h1>Compre Seguidores, Curtidas e Muito Mais</h1>
+  </header>
+
+  <div class="produtos">
+    <!-- CARD INSTAGRAM -->
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="Instagram">
+      <h3>Instagram</h3>
+      <select id="tipo1">
+        <option>Seguidores</option>
+        <option>Curtidas</option>
+        <option>Views</option>
+      </select>
+      <input type="number" id="qtd1" min="50" max="5000" placeholder="Quantidade (50 a 5000)" oninput="atualizarPreco(this, 1)">
+      <div class="preco" id="preco1">R$ 0,00</div>
+      <button onclick="adicionarCarrinho(1, 'Instagram')">Adicionar ao Carrinho</button>
+    </div>
+
+    <!-- CARD YOUTUBE -->
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384067.png" alt="YouTube">
+      <h3>YouTube</h3>
+      <select id="tipo2">
+        <option>Inscritos</option>
+        <option>Views</option>
+        <option>Curtidas</option>
+      </select>
+      <input type="number" id="qtd2" min="50" max="5000" placeholder="Quantidade (50 a 5000)" oninput="atualizarPreco(this, 2)">
+      <div class="preco" id="preco2">R$ 0,00</div>
+      <button onclick="adicionarCarrinho(2, 'YouTube')">Adicionar ao Carrinho</button>
+    </div>
+
+    <!-- CARD TIKTOK -->
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok">
+      <h3>TikTok</h3>
+      <select id="tipo3">
+        <option>Seguidores</option>
+        <option>Likes</option>
+        <option>Views</option>
+      </select>
+      <input type="number" id="qtd3" min="50" max="5000" placeholder="Quantidade (50 a 5000)" oninput="atualizarPreco(this, 3)">
+      <div class="preco" id="preco3">R$ 0,00</div>
+      <button onclick="adicionarCarrinho(3, 'TikTok')">Adicionar ao Carrinho</button>
+    </div>
+  </div>
+
+  <div class="carrinho">
+    <h2>🛒 Carrinho</h2>
+    <ul id="lista-carrinho"></ul>
+    <div class="total" id="total-geral">Total: R$ 0,00</div>
+    <div class="finalizar">
+      <a href="https://discord.gg/whHJem57VE" target="_blank">Finalizar no Discord</a>
+      <a href="https://chat.whatsapp.com/FxlTYzbtNwn2MiW910luZ7?mode=ac_c" target="_blank">Finalizar no WhatsApp</a>
+    </div>
+  </div>
+
+  <script>
+    let total = 0;
+    function atualizarPreco(input, index) {
+      const qtd = parseInt(input.value);
+      const precoDiv = document.getElementById('preco' + index);
+      if (qtd >= 50 && qtd <= 5000) {
+        const preco = qtd * 0.04;
+        precoDiv.textContent = `R$ ${preco.toFixed(2).replace('.', ',')}`;
+      } else {
+        precoDiv.textContent = 'R$ 0,00';
+      }
+    }
+
+    function adicionarCarrinho(index, plataforma) {
+      const tipo = document.getElementById('tipo' + index).value;
+      const qtd = parseInt(document.getElementById('qtd' + index).value);
+      if (isNaN(qtd) || qtd < 50 || qtd > 5000) {
+        alert(\"Quantidade inválida. Use entre 50 e 5000.\");
+        return;
+      }
+      const preco = qtd * 0.04;
+      const item = document.createElement('li');
+      item.textContent = `${qtd} ${tipo} para ${plataforma} - R$ ${preco.toFixed(2).replace('.', ',')}`;
+      document.getElementById('lista-carrinho').appendChild(item);
+      total += preco;
+      document.getElementById('total-geral').textContent = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
+    }
+  </script>
+</body>
+</html>
